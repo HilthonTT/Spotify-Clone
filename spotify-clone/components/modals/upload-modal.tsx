@@ -46,7 +46,7 @@ export const UploadModal = () => {
       setLoading(true);
 
       const imageFile = values.image?.[0];
-      const songFile = values.image?.[0];
+      const songFile = values.song?.[0];
 
       if (!imageFile || !songFile || !user) {
         return toast.error("Missing fields.");
