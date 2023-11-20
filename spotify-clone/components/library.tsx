@@ -5,8 +5,14 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 import { useModal } from "@/hooks/use-modal-store";
 import { useUser } from "@/hooks/use-user";
+import { Song } from "@/types";
+import { MediaItem } from "./media-item";
 
-export const Library = () => {
+interface LibraryProps {
+  songs: Song[];
+}
+
+export const Library = ({ songs }: LibraryProps) => {
   const { onOpen } = useModal();
   const { user } = useUser();
 
@@ -33,7 +39,11 @@ export const Library = () => {
           className="text-neutral-400 cursor-pointer hover:text-white transition"
         />
       </div>
-      <div className="flex flex-col gap-y-2 mt-4 px-3">List of Songs!</div>
+      <div className="flex flex-col gap-y-2 mt-4 px-3">
+        {songs.map((song) => (
+          <MediaItem onClick={() => {}} key={song.id} data={song} />
+        ))}
+      </div>
     </div>
   );
 };

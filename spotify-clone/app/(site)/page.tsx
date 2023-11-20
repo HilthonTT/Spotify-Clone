@@ -1,7 +1,12 @@
 import { Header } from "@/components/header";
 import { ListItem } from "@/components/list-item";
+import { PageContent } from "@/components/page-content";
 
-const Home = () => {
+import { getSongs } from "@/actions/get-songs";
+
+const Home = async () => {
+  const songs = await getSongs();
+
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
       <Header>
@@ -20,7 +25,7 @@ const Home = () => {
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl font-semibold">Newest songs</h1>
         </div>
-        <div>List of Songs!</div>
+        <PageContent songs={songs} />
       </div>
     </div>
   );
