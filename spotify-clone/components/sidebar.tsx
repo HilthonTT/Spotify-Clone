@@ -5,10 +5,13 @@ import { useMemo } from "react";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 
+import { Song } from "@/types";
 import { Box } from "@/components/box";
 import { SidebarItem } from "@/components/sidebar-item";
 import { Library } from "@/components/library";
-import { Song } from "@/types";
+
+import { usePlayer } from "@/hooks/use-player-store";
+import { cn } from "@/lib/utils";
 
 interface SidebarProps {
   children: React.ReactNode;
@@ -17,6 +20,7 @@ interface SidebarProps {
 
 export const Sidebar = ({ children, songs }: SidebarProps) => {
   const pathname = usePathname();
+  const { activeId } = usePlayer();
 
   const routes = useMemo(
     () => [
@@ -37,7 +41,7 @@ export const Sidebar = ({ children, songs }: SidebarProps) => {
   );
 
   return (
-    <div className="flex h-full">
+    <div className={cn("flex h-full", activeId && "h-[calc(100%-80px)]")}>
       <div className="hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2">
         <Box>
           <div className="flex flex-col gap-y-4 px-5 py-4">

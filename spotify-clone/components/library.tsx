@@ -3,10 +3,11 @@
 import { TbPlaylist } from "react-icons/tb";
 import { AiOutlinePlus } from "react-icons/ai";
 
+import { Song } from "@/types";
 import { useModal } from "@/hooks/use-modal-store";
 import { useUser } from "@/hooks/use-user";
-import { Song } from "@/types";
-import { MediaItem } from "./media-item";
+import { useOnPlay } from "@/hooks/use-on-play";
+import { MediaItem } from "@/components/media-item";
 
 interface LibraryProps {
   songs: Song[];
@@ -15,6 +16,8 @@ interface LibraryProps {
 export const Library = ({ songs }: LibraryProps) => {
   const { onOpen } = useModal();
   const { user } = useUser();
+
+  const onPlay = useOnPlay(songs);
 
   const onClick = () => {
     if (!user) {
@@ -41,7 +44,7 @@ export const Library = ({ songs }: LibraryProps) => {
       </div>
       <div className="flex flex-col gap-y-2 mt-4 px-3">
         {songs.map((song) => (
-          <MediaItem onClick={() => {}} key={song.id} data={song} />
+          <MediaItem onClick={onPlay} key={song.id} data={song} />
         ))}
       </div>
     </div>

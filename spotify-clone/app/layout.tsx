@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 
 import { cn } from "@/lib/utils";
+import { Player } from "@/components/player";
 import { SupabaseProvider } from "@/providers/supabase-provider";
 import { UserProvider } from "@/providers/user-provider";
 import { ModalProvider } from "@/providers/modal-provider";
@@ -29,6 +30,7 @@ export default function RootLayout({
           <body className={cn("h-full", font.className)}>
             <ModalProvider />
             <ToastProvider />
+            <Player />
             {children}
           </body>
         </html>
