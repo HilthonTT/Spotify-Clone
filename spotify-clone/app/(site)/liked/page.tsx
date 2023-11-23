@@ -4,9 +4,11 @@ import { getLikedSongs } from "@/actions/get-liked-songs";
 import { Header } from "@/components/header";
 
 import { LikedContent } from "./components/liked-content";
+import { getActiveProducts } from "@/actions/get-active-products";
 
 const LikedPage = async () => {
   const songs = await getLikedSongs();
+  const products = await getActiveProducts();
 
   return (
     <div className="bg-neutral-900 rounded-lg w-full h-full overflow-hidden overflow-y-auto">

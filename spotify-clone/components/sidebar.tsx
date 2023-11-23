@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import { HiHome } from "react-icons/hi";
 import { BiSearch } from "react-icons/bi";
 
-import { Song } from "@/types";
+import { ProductWithPrice, Song } from "@/types";
 import { Box } from "@/components/box";
 import { SidebarItem } from "@/components/sidebar-item";
 import { Library } from "@/components/library";

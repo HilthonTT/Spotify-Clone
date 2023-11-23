@@ -15,7 +15,7 @@ interface LibraryProps {
 
 export const Library = ({ songs }: LibraryProps) => {
   const { onOpen } = useModal();
-  const { user } = useUser();
+  const { user, subscription } = useUser();
 
   const onPlay = useOnPlay(songs);
 
@@ -24,7 +24,9 @@ export const Library = ({ songs }: LibraryProps) => {
       return onOpen("auth");
     }
 
-    // TODO: Check for subscription
+    if (!subscription) {
+      return onOpen("subscribe");
+    }
 
     return onOpen("upload");
   };

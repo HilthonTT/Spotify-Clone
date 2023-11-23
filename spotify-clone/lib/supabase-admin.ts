@@ -70,12 +70,12 @@ export const createOrRetrieveCustomer = async ({
 
   if (error || !data?.stripe_customer_id) {
     const customerData: {
-      metaData: {
+      metadata: {
         supabaseUUID: string;
       };
       email?: string;
     } = {
-      metaData: {
+      metadata: {
         supabaseUUID: uuid,
       },
     };

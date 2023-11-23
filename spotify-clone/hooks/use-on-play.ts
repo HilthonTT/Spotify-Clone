@@ -6,11 +6,15 @@ import { useUser } from "@/hooks/use-user";
 export const useOnPlay = (songs: Song[]) => {
   const { setIds, setId } = usePlayer();
   const { onOpen } = useModal();
-  const { user } = useUser();
+  const { user, subscription } = useUser();
 
   const onPlay = (id: string) => {
     if (!user) {
       return onOpen("auth");
+    }
+
+    if (!subscription) {
+      return onOpen("subscribe");
     }
 
     setId(id);
