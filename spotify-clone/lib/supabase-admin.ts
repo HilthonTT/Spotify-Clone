@@ -140,7 +140,7 @@ export const copyBillingDetailsToCustomer = async (
   }
 };
 
-const manageSubscriptionStatusChange = async (
+export const manageSubscriptionStatusChange = async (
   subscriptionId: string,
   customerId: string,
   createAction = false
